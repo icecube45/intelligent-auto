@@ -17,14 +17,16 @@ MainWindow::MainWindow()
     this->open_auto_tab = new OpenAutoTab(this);
 
     QWidget *widget = new QWidget(this);
+    widget->setContentsMargins(0, 0, 0, 0);
     QVBoxLayout *layout = new QVBoxLayout(widget);
-
+    layout->setContentsMargins(0, 0, 0, 0);
     layout->addWidget(this->tabs_widget());
     if(this->config->get_controls_visible())
     layout->addWidget(this->controls_widget());
     else this->config->set_volume(100);
 
     setCentralWidget(widget);
+    this->theme->update();
 }
 
 QTabWidget *MainWindow::tabs_widget()
