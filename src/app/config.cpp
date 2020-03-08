@@ -16,6 +16,7 @@ Config::Config()
     this->bluetooth_device = this->ia_config.value("Bluetooth/device", QString()).toString();
     this->radio_station = this->ia_config.value("Radio/station", 98.0).toDouble();
     this->radio_muted = this->ia_config.value("Radio/muted", true).toBool();
+    this->controls_visible = this->ia_config.value("Volume Visible", false).toBool();
 
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, [this]() { this->save(); });
@@ -40,7 +41,8 @@ void Config::save()
         this->ia_config.setValue("Radio/station", this->radio_station);
     if (this->radio_muted != this->ia_config.value("Radio/muted", true).toBool())
         this->ia_config.setValue("Radio/muted", this->radio_muted);
-
+    if (this->controls_visible != this->ia_config.value("Controls Visible", true).toBool())
+            this->ia_config.setValue("controls Visible", this->controls_visible);
     this->open_auto_config->save();
 }
 

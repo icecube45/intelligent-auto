@@ -20,7 +20,9 @@ MainWindow::MainWindow()
     QVBoxLayout *layout = new QVBoxLayout(widget);
 
     layout->addWidget(this->tabs_widget());
+    if(this->config->get_controls_visible())
     layout->addWidget(this->controls_widget());
+    else this->config->set_volume(100);
 
     setCentralWidget(widget);
 }

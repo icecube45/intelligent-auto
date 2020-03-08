@@ -47,6 +47,11 @@ class Config : public QObject {
     inline bool get_radio_muted() { return this->radio_muted; }
     inline void set_radio_muted(bool radio_muted) { this->radio_muted = radio_muted; }
 
+    inline bool get_controls_visible() { return this->controls_visible; }
+    inline void set_controls_visible(bool controls_visible) { this->controls_visible = controls_visible; }
+
+
+
     std::shared_ptr<f1x::openauto::autoapp::configuration::Configuration> open_auto_config;
 
     static Config *get_instance();
@@ -61,6 +66,7 @@ class Config : public QObject {
     QString bluetooth_device;
     double radio_station;
     bool radio_muted;
+    bool controls_visible;
 
    signals:
     void brightness_changed(unsigned int);
