@@ -23,7 +23,10 @@ MainWindow::MainWindow()
     layout->addWidget(this->tabs_widget());
     if(this->config->get_controls_visible())
     layout->addWidget(this->controls_widget());
-    else this->config->set_volume(100);
+    else{
+        this->config->set_volume(100);
+        MainWindow::update_system_volume(100);
+    }
 
     setCentralWidget(widget);
     this->theme->update();
