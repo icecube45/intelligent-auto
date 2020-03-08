@@ -14,7 +14,7 @@
 #include <f1x/openauto/autoapp/Configuration/RecentAddressesList.hpp>
 #include <f1x/openauto/autoapp/Service/AndroidAutoEntityFactory.hpp>
 #include <f1x/openauto/autoapp/Service/ServiceFactory.hpp>
-
+#include <thread>
 namespace aasdk = f1x::aasdk;
 namespace autoapp = f1x::openauto::autoapp;
 

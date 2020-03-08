@@ -24,7 +24,7 @@ Bluetooth::Bluetooth() : QObject(qApp)
     BluezQt::InitManagerJob *job = manager->init();
     job->exec();
 
-    this->adapter = manager->usableAdapter().get();
+    this->adapter = ((QSharedPointer<BluezQt::Adapter>)manager->usableAdapter()).data();
 
     for (auto device : this->adapter->devices()) {
         if (device->mediaPlayer() != nullptr) {
