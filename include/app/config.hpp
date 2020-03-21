@@ -50,9 +50,10 @@ class Config : public QObject {
     inline bool get_controls_visible() { return this->controls_visible; }
     inline void set_controls_visible(bool controls_visible) { this->controls_visible = controls_visible; }
 
+    inline QString get_media_home() { return this->media_home; }
+    inline void set_media_home(QString media_home) { this->media_home = media_home; }
 
-
-    std::shared_ptr<f1x::openauto::autoapp::configuration::Configuration> open_auto_config;
+    std::shared_ptr<f1x::openauto::autoapp::configuration::Configuration> openauto_config;
 
     static Config *get_instance();
 
@@ -67,6 +68,7 @@ class Config : public QObject {
     double radio_station;
     bool radio_muted;
     bool controls_visible;
+    QString media_home;
 
    signals:
     void brightness_changed(unsigned int);
