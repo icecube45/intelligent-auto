@@ -13,6 +13,7 @@
 #include <app/config.hpp>
 #include <app/tabs/openauto.hpp>
 #include <app/theme.hpp>
+#include <QBluetoothSocket>
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -41,6 +42,7 @@ class MainWindow : public QMainWindow {
     void is_ready();
     void set_data_state(bool enabled);
     void set_openauto_state(unsigned int alpha);
+
 };
 
 #endif

@@ -1,10 +1,8 @@
 #include <QtWidgets>
-
 #include <app/tabs/data.hpp>
 #include <app/tabs/media.hpp>
 #include <app/tabs/settings.hpp>
 #include <app/window.hpp>
-
 MainWindow::MainWindow()
 {
     this->config = Config::get_instance();
@@ -20,7 +18,12 @@ MainWindow::MainWindow()
     this->layout->addWidget(this->window_widget());
 
     setCentralWidget(widget);
+   
+    
+
+
 }
+
 
 QWidget *MainWindow::window_widget()
 {
