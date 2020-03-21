@@ -24,7 +24,7 @@ Bluetooth::Bluetooth() : QObject(qApp)
     BluezQt::InitManagerJob *job = manager->init();
     job->exec();
 
-    this->adapter = ((QSharedPointer<BluezQt::Adapter>)manager->usableAdapter()).data();
+    this->adapter = manager->usableAdapter();
 
     if (this->has_adapter()) {
         for (auto device : this->get_devices()) {
@@ -34,13 +34,13 @@ Bluetooth::Bluetooth() : QObject(qApp)
             }
         }
 
-        connect(this->adapter.get(), &BluezQt::Adapter::deviceAdded,
+        connect(this->adapter.data(), &BluezQt::Adapter::deviceAdded,
                 [this](BluezQt::DevicePtr device) { emit device_added(device); });
-        connect(this->adapter.get(), &BluezQt::Adapter::deviceChanged, [this](BluezQt::DevicePtr device) {
+        connect(this->adapter.data(), &BluezQt::Adapter::deviceChanged, [this](BluezQt::DevicePtr device) {
             emit device_changed(device);
             this->update_media_player(device);
         });
-        connect(this->adapter.get(), &BluezQt::Adapter::deviceRemoved,
+        connect(this->adapter.data(), &BluezQt::Adapter::deviceRemoved,
                 [this](BluezQt::DevicePtr device) { emit device_removed(device); });
     }
 }
